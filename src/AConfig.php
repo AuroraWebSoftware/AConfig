@@ -1,21 +1,26 @@
 <?php
 
-namespace EmadHa\DynamicConfig;
+namespace AuroraWebSoftware\AConfig;
 
 use Illuminate\Database\Eloquent\Model;
 
 /**
  * Class DynamicConfig
  *
- * @property mixed v
+ * @property mixed value
  * @package EmadHa\DynamicConfig
  */
-class DynamicConfig extends Model
+class AConfig extends Model
 {
     /**
      * @var array
      */
     protected $guarded = ['id'];
+
+    protected $casts = [
+        'value' => 'array',
+    ];
+
 
     /**
      * DynamicConfig constructor.
@@ -25,7 +30,7 @@ class DynamicConfig extends Model
     public function __construct(array $attributes = [])
     {
         parent::__construct($attributes);
-        $this->setTable(config('emadha.site-config.table'));
+        $this->setTable(config('aconfig.table'));
     }
 
     /**
@@ -37,7 +42,7 @@ class DynamicConfig extends Model
      */
     public function setTo($value)
     {
-        return $this->update(['v' => $value]);
+        return $this->update(['value' => $value]);
     }
 
     /**
@@ -48,7 +53,7 @@ class DynamicConfig extends Model
     public function default()
     {
         return config(
-            config('emadha.site-config.defaults_key') . '.' . $this->k
+            config('aconfig.defaults_key') . '.' . $this->key
         );
     }
 
@@ -60,17 +65,9 @@ class DynamicConfig extends Model
      */
     public function revert()
     {
-        return config($this->k)->setTo(
-            config(config('emadha.site-config.defaults_key') . '.' . $this->k)
+        return config($this->key)->setTo(
+            config(config('aconfig.defaults_key') . '.' . $this->key)
         );
-    }
-
-    /**
-     * @return mixed|string
-     */
-    public function __toString()
-    {
-        return $this->v;
     }
 
 }

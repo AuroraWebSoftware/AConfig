@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateSiteConfigTable extends Migration
+class CreateAConfigTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,11 +13,11 @@ class CreateSiteConfigTable extends Migration
      */
     public function up()
     {
-        if (!Schema::hasTable(config('emadha.site-config.table'))) {
-            Schema::create(config('emadha.site-config.table'), function (Blueprint $table) {
+        if (!Schema::hasTable(config('aconfig.table'))) {
+            Schema::create(config('aconfig.table'), function (Blueprint $table) {
                 $table->bigIncrements('id');
-                $table->string('k', 500)->unique();
-                $table->text('v')->nullable();
+                $table->string('key', 500)->unique();
+                $table->json('value')->nullable();
                 $table->timestamps();
             });
         }
@@ -30,6 +30,6 @@ class CreateSiteConfigTable extends Migration
      */
     public function down()
     {
-        Schema::drop(config('emadha.site-config.table'));
+        Schema::drop(config('aconfig.table'));
     }
 }

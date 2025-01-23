@@ -15,12 +15,12 @@ You can publish the config with:
 
 Config file:
 ``` bash
-php artisan vendor:publish --provider="EmadHa\DynamicConfig\ServiceProvider" --tag="config"
+php artisan vendor:publish --provider="AuroraWebSoftware\AConfig\ServiceProvider" --tag="config"
 ```
 
 Migration:
 ```bash
-php artisan vendor:publish --provider="EmadHa\DynamicConfig\ServiceProvider" --tag="migrations"
+php artisan vendor:publish --provider="AuroraWebSoftware\AConfig\ServiceProvider" --tag="migrations"
 ```
  
 ## Usage

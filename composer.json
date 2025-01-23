@@ -1,6 +1,6 @@
 {
-  "name": "emadha/laravel-dynamic-config",
-  "description": "This Package makes it possible for users to have their config files stored in a database table, making it easier to customize these values from UI.",
+  "name": "aurorawebsoftware/aconfig",
+  "description": "",
   "type": "library",
   "require": {
     "laravel/framework": "^7.0|^8.0|^9.0|^10.0|^11.0"
@@ -8,20 +8,21 @@
   "license": "MIT",
   "authors": [
     {
-      "name": "Emad Ha",
-      "email": "me@emadha.com"
+      "name": "Aurora Web Software Team",
+      "email": "websoftwareteam@aurorabilisim.com",
+      "role": "Developer"
     }
   ],
   "minimum-stability": "dev",
   "autoload": {
     "psr-4": {
-      "EmadHa\\DynamicConfig\\": "src/"
+      "AuroraWebSoftware\\AConfig\\": "src/"
     }
   },
   "extra": {
     "laravel": {
       "providers": [
-        "EmadHa\\DynamicConfig\\ServiceProvider"
+        "AuroraWebSoftware\\AConfig\\ServiceProvider"
       ]
     }
   }

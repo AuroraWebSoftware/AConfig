@@ -1,7 +1,7 @@
 <?php
 return [
     /* The Config database table name */
-    'table'                   => 'conf',
+    'table'                   => 'aconfig',
 
     /*
      * The key that defines which config file should be loaded dynamically

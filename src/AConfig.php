@@ -21,7 +21,11 @@ class AConfig extends Model
 
     public function setTo($value)
     {
-        return $this->update(['value' => $value]);
+        $this->update(['value' => $value]);
+
+        config([$this->key => $this]);
+
+        return $this;
     }
 
     public function default()

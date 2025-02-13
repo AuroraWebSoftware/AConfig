@@ -28,7 +28,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
             ], 'config');
         }
 
-        $this->initConfig();
+        $this->app->booted(function () {
+            $this->initConfig();
+        });
     }
 
     private function initConfig()
@@ -60,7 +62,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         if (config('aconfig.auto_delete_orphan_keys') === true) {
             $dbKeys = $dbConfigs->pluck('value', 'key')->toArray();
             $orphanKeys = array_diff_key($dbKeys, $flattened);
-
             if (!empty($orphanKeys)) {
                 AConfig::whereIn('key', array_keys($orphanKeys))->delete();
             }
